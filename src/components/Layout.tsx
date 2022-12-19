@@ -8,7 +8,8 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div>
       <Link to={'/home'}>home</Link>&nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to={'/todos'}>todos</Link>
+      <Link to={'/todos'}>todos</Link>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link to={'/search'}>search</Link>
       {children}
     </div>
   )

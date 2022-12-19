@@ -9,6 +9,7 @@ import { isApiErrorRes, isHTTPError } from './api/errors'
 import ErrorFallback from './ErrorFallback'
 import Home from './pages/Home'
 import TodosPage from './pages/Todos'
+import SearchPage from './pages/Search'
 
 const AppRouter = () => {
   const handleError = useErrorHandler()
@@ -33,6 +34,7 @@ const AppRouter = () => {
     >
       <BrowserRouter>
         <Routes>
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/todos" element={<TodosPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Home />} />
