@@ -19,7 +19,7 @@ export const useTodos = (
 ) => {
   const { data, error, mutate } = useSWR<TodoList>(
     ['todos', params],
-    fetcher,
+    ([url, params]) => fetcher(url, params),
     options
   )
 

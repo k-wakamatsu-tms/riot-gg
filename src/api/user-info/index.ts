@@ -8,7 +8,7 @@ const fetcher = (url: string): Promise<UserInfo> => {
 
 export const useUserInfo = (options?: SWRConfiguration) => {
   const { data, error, mutate } = useSWR<UserInfo>(
-    ['user-info'],
+    'user-info',
     fetcher,
     options
   )
