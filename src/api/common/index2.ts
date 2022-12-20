@@ -4,8 +4,13 @@ import Key from '../../../key.json'
 const api_key: string = Key.api_key
 export const baseApi_riot = ky
   .create({
-    prefixUrl: 'https://jp1.api.riotgames.com/lol/summoner/v4/summoners/',
-    headers: { 'Content-Type': 'application/json' },
+    prefixUrl: 'https://jp1.api.riotgames.com/',
+    headers: {
+      'Content-Type': 'application/json',
+      Origin: 'http://127.0.0.1:5173',
+    },
+    mode: 'cors',
+    // credentials: 'include',
   })
   .extend({
     hooks: {

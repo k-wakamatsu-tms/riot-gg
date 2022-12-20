@@ -22,8 +22,11 @@ type Summoner = {
 
 const SearchPage = () => {
   const [text, setText] = useState('')
+  const [searchWord, setSearchWord] = useState('')
   const { data, error, isLoading, isValidating, mutate } = useSWR(
-    'lol/summoner/v4/summoners/by-name/' + text,
+    searchWord
+      ? encodeURI('lol/summoner/v4/summoners/by-name/' + searchWord)
+      : null,
     fetcher
   )
   return (
@@ -41,14 +44,14 @@ const SearchPage = () => {
         variant="contained"
         startIcon={<SearchRoundedIcon />}
         onClick={() => {
-          mutate()
+          setSearchWord(text)
         }}
       >
         検索
       </Button>
       {error && <div>failed to load</div>}
       {isLoading && <div>Loading...</div>}
-      {!data && <div>Loading...</div>}
+      {!data && <div></div>}
       {data && (
         <>
           <p>accoundId: {data.accoundId}</p>
@@ -60,7 +63,6 @@ const SearchPage = () => {
           <p>summonerLevel: {data.summonerLevel}</p>
         </>
       )}
-      :{null}
     </Layout>
   )
 }
